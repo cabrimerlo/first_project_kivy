@@ -1,0 +1,108 @@
+#: import Factory kivy.factory.Factory
+
+MyScroll:
+
+<MyScroll@ScrollView>:
+    MyView:
+        size_hint: 1, None
+        height: 800
+
+<sp@SpinnerOption>:
+    color: 1, 1, 1, 1
+    background_color: 0, 0, 1, 1
+    font_size: 10
+    spacing: 50
+
+<MyView>:
+    orientation: "vertical"
+    spacing: dp(100)
+    padding: dp(100)
+    canvas.before:
+        Color:
+            rgba: .2, .5, .1, 1
+        Rectangle:
+            size: root.size
+
+
+    Spinner:
+        id: serie
+        on_text: root.serie()
+        text: "Sélectionnez votre série au BAC"
+        values: ["TSEco", "TSE", "TSExp", "TLL", "TSS", "TAL"]
+        background_color: 0, 0, 0, 1
+        size_hint: None, None
+        width: root.width - dp(300)
+        height: dp(50)
+        pos: root.width/2 - self.width/2, root.height/2 - self.height/2 + 250
+        font_size: dp(20)
+        option_cls: Factory.sp
+
+    Spinner:
+        id: moy
+        on_text: root.moy()
+        text: "Sélectionnez votre moy du BAC"
+        values: ["10,00 à 10,50", "10,51 à 11,50", "11,51 à 13,50", "13,51 à +"]
+        background_color: 0, 0, 0, 1
+        size_hint: None, None
+        width: root.width - dp(300)
+        height: dp(50)
+        pos: root.width/2 - self.width/2, root.height/2 - self.height/2 + 150
+        font_size: dp(20)
+        option_cls: Factory.sp
+    Spinner:
+        id: ans
+        on_text: root.ans()
+        text: "Sélectionnez votre année au Lycée"
+        values: ["3 ans", "4 ans", "5 ans"]
+        background_color: 0, 0, 0, 1
+        size_hint: None, None
+        width: root.width - dp(300)
+        height: dp(50)
+        pos: root.width/2 - self.width/2, root.height/2 - self.height/2 + 50
+        font_size: dp(20)
+        option_cls: Factory.sp
+    Spinner:
+        id: sexe
+        on_text: root.sexe()
+        text: "Sélectionnez votre Sexe"
+        values: ["Masculin", "Féminin"]
+        background_color: 0, 0, 0, 1
+        size_hint: None, None
+        width: root.width - dp(300)
+        height: dp(50)
+        pos: root.width/2 - self.width/2, root.height/2 - self.height/2 - 50
+        font_size: dp(20)
+        option_cls: Factory.sp
+    Spinner:
+        id: cas
+        on_text: root.cas()
+        text: "Sélectionnez votre cas social"
+        values: ["déces parent", "Maladie grave", "Handicap", "Aucun"]
+        background_color: 0, 0, 0, 1
+        size_hint: None, None
+        width: root.width - dp(300)
+        height: dp(50)
+        pos: root.width/2 - self.width/2, root.height/2 - self.height/2 - 150
+        font_size: dp(20)
+        option_cls: Factory.sp
+    Button:
+        text: "Calculer"
+        size_hint: None, None
+        width: dp(300)
+        height: dp(50)
+        pos: root.width/2 - self.width/2, root.height/2 - 250
+        background_color: "red"
+        on_press: root.calcul()
+    Label:
+        id: resultat
+        pos: root.width/2 - self.width/2, root.height/2 - 350
+        size_hint: None, None
+        width: root.width - dp(300)
+        height: dp(50)
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                size: self.size
+                pos: root.width/2 - self.width/2, root.height/2 - 350
+        text: "RESULTAT"
